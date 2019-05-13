@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from "prop-types";
 
 
-const styles = {
+export const styles = {
     container: {
         position: 'relative',
         display: 'flex'
@@ -25,7 +25,44 @@ const styles = {
 }
 
 class Tooltip extends React.Component{
+    constructor(props) {
+        super(props)
 
+        this.state = {
+            hovering: false,
+        }
+
+        this.mouseOver = this.mouseOver.bind(this)
+        this.mouseOut = this.mouseOut.bind(this)
+    }
+    mouseOver() {
+        this.setState({
+            hovering: true
+        })
+    }
+    mouseOut() {
+        this.setState({
+            hovering: false
+        })
+    }
+    render() {
+        const { text, children } = this.props
+        const { hovering } = this.state
+
+        return (
+            <div
+                onMouseOver={this.mouseOver}
+                onMouseOut={this.mouseOut}
+                style={styles.container}>
+                {hovering === true && <div style={styles.tooltip}>{text}</div>}
+                {children}
+            </div>
+        )
+    }
+}
+
+Tooltip.propTypes = {
+    text: PropTypes.string.isRequired
 }
 
 export default Tooltip;

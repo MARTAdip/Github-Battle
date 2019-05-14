@@ -15,22 +15,17 @@ const styles = {
 }
 
 class Loading extends React.Component {
-    constructor(props){
-        super(props)
 
-        this.state = {
-            content: props.text,
-        }
+    state = { content: this.props.text }
 
-    }
 
     componentDidMount() {
-        const { speed, text } = this.props;
+        const {speed, text} = this.props;
 
         this.interval = window.setInterval(() => {
             this.state.content === text + '...'
-                ? this.setState({ content: text })
-                : this.setState(({ content }) => ({ content: content + '.'}))
+                ? this.setState({content: text})
+                : this.setState(({content}) => ({content: content + '.'}))
         }, speed)
     }
 
@@ -39,7 +34,7 @@ class Loading extends React.Component {
     }
 
     render() {
-        return(
+        return (
             <p style={styles.content}>
                 {this.state.content}
             </p>

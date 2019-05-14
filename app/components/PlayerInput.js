@@ -4,28 +4,17 @@ import { ThemeConsumer } from '../../contexts/theme'
 
 
 class PlayerInput extends React.Component {
-    constructor(props){
-        super(props)
 
-        this.state = {
-            username: ''
-        }
-        this.handleChange = this.handleChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
+    state = { username: '' }
 
-    }
 
-    handleSubmit(e){
+    handleSubmit = (e) => {
         e.preventDefault(e);
-
         this.props.onSubmit(this.state.username);
     }
 
-    handleChange(e){
-        this.setState({
-            username: e.target.value
-        })
-    }
+    handleChange = (e) => this.setState({username: e.target.value})
+
 
     render() {
         return(

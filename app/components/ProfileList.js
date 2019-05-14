@@ -2,36 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import {FaCompass, FaBriefcase, FaUsers, FaUserFriends, FaCode, FaUser} from 'react-icons/fa'
 import Tooltip from './Tooltip'
-import { styles } from './Tooltip';
-
 
 class ProfileList extends React.Component {
-    constructor(props){
-        super(props)
-
-        this.state = {
-            hoveringLocation: false,
-            hoveringCompany: false
-        }
-        this.mouseOut = this.mouseOut.bind(this)
-        this.mouseOver = this.mouseOver.bind(this)
-
-    }
-
-    mouseOver(id){
-        this.setState({
-            [id]: true
-        })
-    }
-
-    mouseOut(id){
-        this.setState({
-            [id]: false
-        })
-    }
-
     render() {
-        const { hoveringLocation, hoveringCompany } = this.state;
         const { profile } = this.props;
 
         return(
@@ -41,25 +14,19 @@ class ProfileList extends React.Component {
                     {profile.name}
                 </li>
                 {profile.location && (
-                    <li
-                        onMouseOver={() => this.mouseOver('hoveringLocation')}
-                        onMouseOut={() => this.mouseOut('hoveringLocation')}
-                        style={styles.container}
-                    >
-                        {hoveringLocation === true && <div style={styles.tooltip}>User's Location</div>}
-                        <FaCompass color='rgb(144, 115, 255)' size={22}/>
-                        {profile.location}
+                    <li>
+                        <Tooltip text="User's Location">
+                            <FaCompass color='rgb(144, 115, 255)' size={22}/>
+                            {profile.location}
+                        </Tooltip>
                     </li>
                 )}
                 {profile.company && (
-                    <li
-                        onMouseOver={() => this.mouseOver('hoveringCompany')}
-                        onMouseOut={() => this.mouseOut('hoveringCompany')}
-                        style={styles.container}
-                    >
-                        {hoveringCompany === true && <div style={styles.tooltip}>User's Company</div>}
-                        <FaBriefcase color='#795548' size={22}/>
-                        {profile.company}
+                    <li>
+                        <Tooltip text="User's Company">
+                            <FaBriefcase color='#795548' size={22}/>
+                            {profile.company}
+                        </Tooltip>
                     </li>
                 )}
                 <li>

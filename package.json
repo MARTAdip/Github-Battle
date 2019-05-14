@@ -21,7 +21,7 @@
       }
     ]
   ],
-  "author": "",
+  "author": "martaDIP",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.4.4",
@@ -40,9 +40,11 @@
   "dependencies": {
     "babel-eslint": "^8.2.3",
     "prop-types": "^15.7.2",
+    "query-string": "^6.5.0",
     "ramda": "^0.26.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-icons": "^3.7.0"
+    "react-icons": "^3.7.0",
+    "react-router-dom": "^5.0.0"
   }
 }
